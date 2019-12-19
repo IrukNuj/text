@@ -5,8 +5,6 @@
 - RaspberryPi 3B
 - BAFFALOのHDD 4TB
 
-- 参考にしました： https://debimate.jp/2019/03/24/raspberry-pi3%E3%82%92%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%BC%E3%83%90samba%E5%8C%96%E3%81%97%E3%80%81linux-mac-win%E3%81%A7%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%B1%E6%9C%89/
-
 <br/>
 
 ## 使用コマンド
@@ -50,28 +48,29 @@ sudo wipefs -a /dev/(sda | sdb)
 sudo fdisk /dev/sd(hogehoge)
 ```
 
-> (注釈)：次の順で実行
-　n：パーティションの作成
-    ⇒ 以降の選択肢は全て[Enter]
-　p：パーティションの表示
-    ⇒ /dev/sdb1にType=Linux のパーティションが表示されればOK
-　w：書き込み（設定を反映）
-　q：終了
+- fdiskの画面でやること
+  - "n"を入力でパーティションの作成
+    - 分割数、容量などはよしなに
+  - "p"でパーティションの確認
+  - 問題なければ"w"で反映
+
 
 ```.bash
 sudo mkfs.exfat /dev/sdb1
 ```
 
 ```.bash
-$ sudo blkid /dev/sdb1  (注釈)：UUIDの確認
-/dev/sdb1: LABEL="NFS" UUID="5B2B-6E3C" TYPE="exfat" PARTUUID="6b70f462-01"
+sudo blkid /dev/sdb1
+// UUIDの確認をする。
+```
 
-$ sudo vi /etc/auto.master
+```.bash
+sudo vim /etc/auto.master
 
-[以下、/etc/auto.master内]
-# 以下を追記。
-# マウントポイント　マウント対処を記載したファイル名　　オプション
+-----
+
 /mnt    /etc/auto.misc
+// マウント先, 詳細ファイル
 ```
 
 ```
@@ -79,10 +78,42 @@ df -h
 ```
 でマウント先をしっかり確認する！
 
+```.bash
+sudo vim /etc/auto.misc
+
+//以下記述
+ssd -fstype=exfat-fuse,rw,umask=000 :/dev/disk/by-uuid/さっきのUUID
+```
+
+- sambaの設定
+
+```.bash
+sudo vim /etc/samba/smb.conf
+```
+
+```.yml
+[pi]
+  comment = yosinani
+  path = df -hで出てきたマウント先
+  public = yes
+  read only = no
+  browsable = yes
+  force user = pi
+```
+
+- 起動
+
+```.bash
+sudo systemctl enable smbd
+sudo systemctl enable nmbd
+sudo reboot
+```
+
 - Windows: 適当なファイル開く画面で ¥¥192.168.0.xxx
-- Mac: ネットワーク画面からアクセスみたいな画面があるはず。192.168.0.xxx入れてどうぞ
+- Mac: ネットワーク画面からアクセスみたいな画面があるはず。192.168.0.xxxを入れて
 
 基本的に同一ネットワーク上であればRaspberryPiの端末が見えるので問題ないとは思います。
 
 > ![](https://pbs.twimg.com/media/EMJ1Iy3UUAI2whM?format=jpg&name=small)
+>
 > 出来た。いえーい。
