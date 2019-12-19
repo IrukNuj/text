@@ -11,4 +11,4 @@ jobs:
       - name: npm install
         run: npm install
       - name: text lint
-        run: npm run lint ./books_impression/*
+        run: npm run lint ./contents/*
