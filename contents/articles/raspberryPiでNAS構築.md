@@ -117,3 +117,6 @@ sudo reboot
 > ![](https://pbs.twimg.com/media/EMJ1Iy3UUAI2whM?format=jpg&name=small)
 >
 > 出来た。いえーい。
+
+- 高速化について
+  - https://blog.bnikka.com/raspberrypi/raspberrypi-samba.html
