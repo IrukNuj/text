@@ -12,16 +12,16 @@ filters:
 rules:
   prefer-tari-tari: true
   general-novel-style-ja:
-    chars_leading_paragraph: "　「『【〈《（(“\"‘'［[〔｛{＜<"
-    no_punctuation_at_closing_quote: true
-    space_after_marks: true
+    chars_leading_paragraph: false
+    no_punctuation_at_closing_quote: false
+    space_after_marks: false
     even_number_ellipsises: true
     even_number_dashes: true
     appropriate_use_of_punctuation: true
     appropriate_use_of_interpunct: true
     appropriate_use_of_choonpu: true
     appropriate_use_of_minus_sign: true
-    max_arabic_numeral_digits: 2  
+    max_arabic_numeral_digits: false
   preset-ja-technical-writing:
     sentence-length:
       max: 120
@@ -111,17 +111,6 @@ rules:
     ja-no-space-around-parentheses: true
     ja-space-after-exclamation: false
     ja-space-after-question: false
-  general-novel-style-ja:
-    chars_leading_paragraph: false
-    no_punctuation_at_closing_quote: false
-    space_after_marks: false
-    even_number_ellipsises: true
-    even_number_dashes: true
-    appropriate_use_of_punctuation: true
-    appropriate_use_of_interpunct: true
-    appropriate_use_of_choonpu: true
-    appropriate_use_of_minus_sign: true
-    max_arabic_numeral_digits: false
   spellcheck-tech-word: true
   period-in-list-item:
     periodMark: ""
@@ -136,9 +125,8 @@ rules:
   ja-hiragana-keishikimeishi: true
   ja-hiragana-fukushi: true
   ja-hiragana-hojodoushi: true
-  no-insert-dropping-sa: true
+  "@textlint-ja/textlint-rule-no-insert-dropping-sa": true
   abbr-within-parentheses: true
   no-mixed-zenkaku-and-hankaku-alphabet: true
   footnote-order: true
-  textlint-rule-ja-yahoo-kousei
   incremental-headers: true
