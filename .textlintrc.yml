@@ -10,6 +10,18 @@ filters:
       - 酷い
       - 方
 rules:
+  prefer-tari-tari: true
+  general-novel-style-ja:
+    chars_leading_paragraph: "　「『【〈《（(“\"‘'［[〔｛{＜<"
+    no_punctuation_at_closing_quote: true
+    space_after_marks: true
+    even_number_ellipsises: true
+    even_number_dashes: true
+    appropriate_use_of_punctuation: true
+    appropriate_use_of_interpunct: true
+    appropriate_use_of_choonpu: true
+    appropriate_use_of_minus_sign: true
+    max_arabic_numeral_digits: 2  
   preset-ja-technical-writing:
     sentence-length:
       max: 120
@@ -59,13 +71,13 @@ rules:
     1.1.5.図表のキャプション: true
     1.2.1.句点(。)と読点(、): true
     1.2.2.ピリオド(.)とカンマ(,): true
-    2.1.2.漢字: false
+    2.1.2.漢字: true
     2.1.5.カタカナ: false
     2.1.6.カタカナの長音: false
     2.1.8.算用数字: true
     2.1.9.アルファベット: true
     2.1.10.算用数字の位取りの表記: true
-    2.2.1.ひらがなと漢字の使い分け: false
+    2.2.1.ひらがなと漢字の使い分け: true
     2.2.2.算用数字と漢数字の使い分け: true
     2.2.3.一部の助数詞の表記: true
     3.1.1.全角文字と半角文字の間: true
@@ -124,8 +136,9 @@ rules:
   ja-hiragana-keishikimeishi: true
   ja-hiragana-fukushi: true
   ja-hiragana-hojodoushi: true
-  "@textlint-ja/textlint-rule-no-insert-dropping-sa": true
-  prefer-tari-tari: false
+  no-insert-dropping-sa: true
   abbr-within-parentheses: true
   no-mixed-zenkaku-and-hankaku-alphabet: true
   footnote-order: true
+  textlint-rule-ja-yahoo-kousei
+  incremental-headers: true
